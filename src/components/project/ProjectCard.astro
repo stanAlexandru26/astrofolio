@@ -12,7 +12,7 @@ const props = Astro.props;
     'transition-all duration-300 hover:scale-105 hover:bg-white dark:hover:bg-slate-800 md:flex-row',
   ]}
 >
-  <a href={`/projects/${props.slug}`}>
+  <a href={`/project/${props.slug}`}>
     <Image
       src={props.thumbnail}
       width={1600}
@@ -36,7 +36,7 @@ const props = Astro.props;
     </div>
 
     <div class="flex w-full flex-row items-center justify-between">
-      <a href={`/projects/${props.slug}`} class="font-bold">Learn More</a>
+      <a href={`/project/${props.slug}`} class="font-bold">Learn More</a>
 
       <div class="flex justify-end gap-2">
         {props.repoUrl && <IconButton icon="fa:github" href={props.repoUrl} />}

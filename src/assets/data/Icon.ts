@@ -134,7 +134,7 @@ export const IconData: IconDataType[] = [
     icon: 'file-icons:mdx',
   },
   {
-    name: 'Astro Js',
+    name: 'AstroJs',
     slug: 'astro',
     color: '#ff5d01',
     link: 'https://astro.build/',

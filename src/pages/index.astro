@@ -1,6 +1,19 @@
 ---
+import ProjectCard from '@/components/project/ProjectCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Image } from '@astrojs/image/components';
+import { fetchPosts } from '@/utils/content';
+
+const trimArray = (array, size) => {
+  const newArray = [];
+  for (let i = 0; i < size; i++) {
+    newArray.push(array[i]);
+  }
+  return newArray;
+};
+
+const posts = await fetchPosts('project');
+const smallArray = trimArray(posts, 3);
 ---
 
 <BaseLayout>
@@ -18,8 +31,8 @@ import { Image } from '@astrojs/image/components';
       <div class="flex shrink-0 flex-col gap-4 rounded-full p-[2px]">
         <Image
           alt="Portrait"
-          height={200}
-          width={200}
+          height={180}
+          width={180}
           quality={100}
           src="/src/assets/images/portrait.webp"
           format="webp"
@@ -38,6 +51,9 @@ import { Image } from '@astrojs/image/components';
         These are some personal projects I have been working on to learn more about different
         libraries and browser APIs.
       </p>
+    </div>
+    <div class="grid grid-cols-1 gap-4">
+      {smallArray.map((project) => <ProjectCard {...project} />)}
     </div>
   </article>
 </BaseLayout>
