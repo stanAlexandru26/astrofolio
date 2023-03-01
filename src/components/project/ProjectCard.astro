@@ -1,0 +1,47 @@
+---
+import IconButton from '../common/IconButton.astro';
+import IconBadge from './IconBadge.astro';
+import { Image } from '@astrojs/image/components';
+const props = Astro.props;
+---
+
+<article
+  class:list={[
+    'relative flex flex-col justify-between gap-2 p-4 md:gap-4',
+    'rounded-lg border border-gray-300 dark:border-gray-700',
+    'transition-all duration-300 hover:scale-105 hover:bg-white dark:hover:bg-slate-800 md:flex-row',
+  ]}
+>
+  <a href={`/projects/${props.slug}`}>
+    <Image
+      src={props.thumbnail}
+      width={1600}
+      height={960}
+      alt={props.slug}
+      class="mt-2 rounded-lg md:mt-0 md:w-72"
+    />
+  </a>
+
+  <div class="flex h-full w-full flex-1 flex-col justify-between py-4 px-2 md:py-2 md:px-4">
+    <div>
+      <h2>{props.title}</h2>
+      <p>{props.description}</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      {
+        props.icons?.map((icon) => {
+          return <IconBadge label={icon} />;
+        })
+      }
+    </div>
+
+    <div class="flex w-full flex-row items-center justify-between">
+      <a href={`/projects/${props.slug}`} class="font-bold">Learn More</a>
+
+      <div class="flex justify-end gap-2">
+        {props.repoUrl && <IconButton icon="fa:github" href={props.repoUrl} />}
+        {props.demoUrl && <IconButton icon="fa:external-link" href={props.demoUrl} />}
+      </div>
+    </div>
+  </div>
+</article>

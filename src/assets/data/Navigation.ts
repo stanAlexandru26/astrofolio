@@ -21,7 +21,7 @@ export const NAVBAR_LINKS: NavbarLink[] = [
   {
     title: 'projects',
     name: 'Project',
-    href: '/projects',
+    href: '/project',
     icon: 'ant-design:project-filled',
   },
   // {

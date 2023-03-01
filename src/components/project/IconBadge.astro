@@ -1,0 +1,29 @@
+---
+import { IconData, IconDataType } from '@/assets/data/Icon';
+import { Icon as AstroIcon } from 'astro-icon';
+const { label } = Astro.props;
+
+function getIcon(slug): IconDataType | null {
+  const icon: IconDataType | undefined = IconData.find((item) => item.slug === slug);
+  if (!icon) {
+    return null;
+  }
+  return icon;
+}
+
+const icon = getIcon(label);
+---
+
+<a
+  href={icon?.link}
+  class="flex items-center justify-center gap-1 rounded-full border border-gray-300 px-3 py-2 dark:border-gray-700"
+>
+  {
+    icon?.icon && (
+      <>
+        <AstroIcon name={icon?.icon} width={16} height={16} class="text-black dark:text-white" />
+      </>
+    )
+  }
+  <p class="text-xs leading-4">{icon?.name}</p>
+</a>

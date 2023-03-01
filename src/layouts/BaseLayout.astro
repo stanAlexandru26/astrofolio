@@ -22,7 +22,9 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
   <body class="layout scroll-smooth pt-24">
     <Header />
 
-    <slot />
+    <main>
+      <slot />
+    </main>
 
     <Footer />
   </body>

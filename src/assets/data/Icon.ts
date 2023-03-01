@@ -75,7 +75,7 @@ export const IconData: IconDataType[] = [
     slug: 'postgresql',
     color: '#035976',
     link: 'https://www.postgresql.org',
-    icon: 'akar-icons:postgresql-fill',
+    icon: 'simple-icons:postgresql',
   },
   {
     name: 'MongoDB',
@@ -98,7 +98,6 @@ export const IconData: IconDataType[] = [
     slug: 'openweather',
     color: '#f1502f',
     link: 'https://openweathermap.org/',
-    icon: 'arcticons:openweather-alt',
   },
   {
     name: 'Tailwind CSS',
@@ -112,7 +111,6 @@ export const IconData: IconDataType[] = [
     slug: 'cssmodules',
     color: '#f1502f',
     link: 'https://www.w3.org/Style/CSS/Overview.en.html',
-    icon: 'simple-icons:cssmodules',
   },
   {
     name: 'Firebase',
@@ -133,7 +131,7 @@ export const IconData: IconDataType[] = [
     slug: 'mdx',
     color: '#fcb32c',
     link: 'https://mdxjs.com/',
-    icon: 'simple-icons:mdx',
+    icon: 'file-icons:mdx',
   },
   {
     name: 'Astro Js',

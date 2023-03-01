@@ -1,0 +1,26 @@
+---
+import { fetchPosts } from '@/utils/content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await fetchPosts('project');
+  return posts.map((post) => ({
+    params: { project: `project/${post.slug}` },
+    props: { post },
+  }));
+}
+const { post } = Astro.props;
+
+console.log('🚀 ~ file: index.astro:17 ~ post:', post.title);
+const meta = {
+  title: post.title,
+  description: post.description,
+  noindex: false,
+  ogType: 'article',
+};
+---
+
+<BaseLayout meta={meta}>
+  <section class="mx-auto py-8 sm:py-16 lg:py-20">
+  </section>
+</BaseLayout>
