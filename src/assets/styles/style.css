@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-orange-50 text-black dark:bg-gray-900 dark:text-slate-300;
+    @apply bg-white text-black dark:bg-gray-900 dark:text-slate-300;
   }
 
   h1,
@@ -48,4 +48,9 @@
   .layoutContainer {
     @apply mx-auto w-10/12 sm:w-10/12 md:w-9/12 lg:w-8/12 xl:w-6/12;
   }
+  .scroll {
+    @apply shadow-sm backdrop-blur-lg dark:bg-slate-900/50;
+  }
 }
+
+

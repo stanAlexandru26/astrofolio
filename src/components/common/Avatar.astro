@@ -1,0 +1,17 @@
+---
+import { Image } from '@astrojs/image/components';
+
+const { size = 45 } = Astro.props;
+---
+
+<a href="/" aria-label="home">
+  <Image
+    alt="Avatar"
+    height={size}
+    aspectRatio={1 / 1}
+    quality={100}
+    src="/src/assets/images/avatar.webp"
+    format="webp"
+    class="rounded-full"
+  />
+</a>

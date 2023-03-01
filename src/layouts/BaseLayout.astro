@@ -5,6 +5,8 @@ import '@/assets/styles/style.css';
 import MetaHeader from '@/components/MetaHeader.astro';
 import Footer from '@/components/layout/Footer.astro';
 import Header from '@/components/layout/Header.astro';
+import Anouncement from '@/components/layout/Anouncement.astro';
+import Script from '@/components/Script.astro';
 
 export interface Props {
   meta?: MetaSEO;
@@ -14,18 +16,19 @@ const { language = 'en', textDirection = 'ltr' } = SITE;
 ---
 
 <!DOCTYPE html>
-<html lang={language} dir={textDirection} class="antialiased">
+<html lang={language} dir={textDirection} class="antialiased tracking-tight">
   <head>
     <MetaHeader {...meta} />
   </head>
 
-  <body class="layout scroll-smooth pt-24">
-    <Header />
-
-    <main>
+  <body class="scroll-smooth">
+    <Anouncement />
+    <Header isSticky />
+    <main class="layout">
       <slot />
     </main>
 
     <Footer />
+    <Script />
   </body>
 </html>
