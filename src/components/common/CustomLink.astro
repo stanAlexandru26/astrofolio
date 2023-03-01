@@ -1,0 +1,26 @@
+---
+import { Icon } from 'astro-icon';
+
+const { href, text = 'Learn More' } = Astro.props;
+const isExternalLink =
+  href.startsWith('http://') || href.startsWith('https://') || href.startsWith('mailto:');
+const isInternalLink = href.startsWith('/');
+---
+
+<a
+  target={isExternalLink ? '_blank' : '_self'}
+  rel={isExternalLink ? 'noopener' : ''}
+  href={href}
+  class:list={['group relative flex items-center font-medium text-lg justify-center space-x-1']}
+>
+  <span
+    class='transition-colors duration-300 before:absolute before:-bottom-0.5 before:left-0 before:h-0.5 before:w-full before:origin-right before:scale-x-0 before:rounded before:bg-black before:transition-transform before:duration-300 before:ease-in-out before:content-[""] hover:before:origin-left hover:before:scale-x-100 dark:before:bg-white'
+  >
+    <slot>
+      {text}
+    </slot>
+  </span>
+
+  {isExternalLink && <Icon name="ri:external-link-fill" class="h-5 w-5" />}
+  {isInternalLink && <Icon name="ph:arrow-right-bold" class="h-5 w-5" />}
+</a>

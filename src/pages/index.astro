@@ -3,6 +3,7 @@ import ProjectCard from '@/components/project/ProjectCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { Image } from '@astrojs/image/components';
 import { fetchPosts } from '@/utils/content';
+import CustomLink from '@/components/common/CustomLink.astro';
 
 const trimArray = (array, size) => {
   const newArray = [];
@@ -17,7 +18,7 @@ const smallArray = trimArray(posts, 3);
 ---
 
 <BaseLayout>
-  <article class="space-y-6">
+  <article class="mb-8 space-y-6">
     <div class="flex flex-col-reverse items-start justify-between sm:flex-row">
       <div class="space-y-4 sm:pr-20">
         <h1>Alexandru-Ștefan Stan</h1>
@@ -36,13 +37,8 @@ const smallArray = trimArray(posts, 3);
           quality={100}
           src="/src/assets/images/portrait.webp"
           format="webp"
-          class="animate-wave rounded-full"
+          class="rounded-full"
         />
-        <p
-          class="rounded-md bg-green-50/70 text-center font-semibold text-green-400 dark:bg-green-50"
-        >
-          OPEN FOR WORK
-        </p>
       </div>
     </div>
     <div class="space-y-4">
@@ -52,8 +48,11 @@ const smallArray = trimArray(posts, 3);
         libraries and browser APIs.
       </p>
     </div>
-    <div class="grid grid-cols-1 gap-4">
-      {smallArray.map((project) => <ProjectCard {...project} />)}
+    <div class="w-40">
+      <CustomLink href="/project">View All Projects</CustomLink>
     </div>
   </article>
+  <div class="grid grid-cols-1 gap-4">
+    {smallArray.map((project) => <ProjectCard {...project} />)}
+  </div>
 </BaseLayout>
