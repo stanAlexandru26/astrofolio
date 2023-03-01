@@ -1,0 +1,24 @@
+---
+import { NAVBAR_LINKS } from '@/assets/data/Navigation';
+import NavItem from './NavItem.astro';
+import IconButton from '../common/IconButton.astro';
+import { CONTACT_LINKS } from '@/assets/data/Contact';
+import ToggleTheme from './ToggleTheme.astro';
+---
+
+<header class="fixed inset-x-0 top-0 z-40 shadow-sm backdrop-blur-lg dark:bg-slate-900/50">
+  <nav class="layoutContainer flex h-16 items-center justify-between">
+    <ul class="ml-[-0.75rem] hidden items-center justify-center gap-2 sm:flex">
+      {NAVBAR_LINKS.map((link) => <NavItem {...link} />)}
+    </ul>
+    <div class="inline-block sm:hidden"></div>
+    <div class="flex space-x-2">
+      {
+        CONTACT_LINKS.filter((contact) => contact.inNavbar).map(({ icon, href }) => (
+          <IconButton href={href} icon={icon} />
+        ))
+      }
+      <ToggleTheme />
+    </div>
+  </nav>
+</header>

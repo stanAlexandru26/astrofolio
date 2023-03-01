@@ -1,7 +1,43 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Image } from '@astrojs/image/components';
 ---
 
 <BaseLayout>
-  <h1>Astro</h1>
+  <article class="space-y-6">
+    <div class="flex flex-col-reverse items-start justify-between sm:flex-row">
+      <div class="space-y-4 pr-20">
+        <h1>Alexandru-Ștefan Stan</h1>
+        <p class="h4 font-medium">Full-stack Development Enthusiast</p>
+        <p class="text-lg">
+          I&apos;m an aspiring Full-Stack Developer from 🇷🇴, dedicated to creating engaging web
+          applications and websites using cutting-edge technologies. I find immense satisfaction in
+          seeing my code being acknowledged and valued.
+        </p>
+      </div>
+      <div class="flex shrink-0 flex-col gap-4 rounded-full p-[2px]">
+        <Image
+          alt="Portrait"
+          height={200}
+          width={200}
+          quality={100}
+          src="/src/assets/images/portrait.webp"
+          format="webp"
+          class="animate-wave rounded-full"
+        />
+        <p
+          class="rounded-md bg-green-50/70 text-center font-semibold text-green-400 dark:bg-green-50"
+        >
+          OPEN FOR WORK
+        </p>
+      </div>
+    </div>
+    <div class="space-y-4">
+      <h2>Latest projects</h2>
+      <p>
+        These are some personal projects I have been working on to learn more about different
+        libraries and browser APIs.
+      </p>
+    </div>
+  </article>
 </BaseLayout>

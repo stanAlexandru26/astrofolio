@@ -32,7 +32,7 @@ export const getPermalink = (slug = '', type = 'page'): string => {
 
   switch (type) {
     case 'page':
-    default: 
+    default:
       permalink = createPath(slug);
       break;
   }

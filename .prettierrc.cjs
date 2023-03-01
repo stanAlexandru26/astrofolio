@@ -6,9 +6,16 @@ module.exports = {
   trailingComma: 'es5',
   useTabs: false,
   semi: true,
-
+  astroAllowShorthand: false,
   plugins: [require.resolve('prettier-plugin-astro'), require('prettier-plugin-tailwindcss')],
 
-  overrides: [{ files: '*.astro', options: { parser: 'astro' } }],
+  overrides: [
+    {
+      files: '*.astro',
+      options: {
+        parser: 'astro',
+      },
+    },
+  ],
   tailwindConfig: './tailwind.config.cjs',
 };

@@ -1,0 +1,21 @@
+---
+import type { NavbarLink } from '@/assets/data/Navigation';
+
+export interface Props extends NavbarLink {}
+
+const { href, name } = Astro.props;
+
+const isCurrentPage = href === Astro.url.pathname;
+---
+
+<a
+  href={href}
+  class:list={[
+    'rounded-md p-1 px-3 sm:py-2 md:inline-block',
+    'hover:text-black  dark:hover:text-white',
+    'hover:bg-gray-300 dark:hover:bg-gray-700',
+    { 'bg-gray-200 text-black dark:bg-gray-800 dark:text-white': isCurrentPage },
+  ]}
+>
+  {name}
+</a>
