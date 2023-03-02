@@ -13,15 +13,19 @@ const props = Astro.props;
     'transition-all duration-300 hover:scale-105 hover:bg-white dark:hover:bg-slate-800 md:flex-row',
   ]}
 >
-  <a href={`/project/${props.slug}`}>
-    <Image
-      src={props.thumbnail}
-      width={1600}
-      height={960}
-      alt={props.slug}
-      class="mt-2 rounded-lg md:mt-0 md:w-72"
-    />
-  </a>
+  {
+    props.thumbnail && (
+      <a href={`/project/${props.slug}`}>
+        <Image
+          src={props.thumbnail}
+          width={1600}
+          height={960}
+          alt={props.slug}
+          class="mt-2 rounded-lg md:mt-0 md:w-72"
+        />
+      </a>
+    )
+  }
 
   <div class="flex h-full w-full flex-1 flex-col justify-between py-4 px-2 md:py-2 md:px-4">
     <div>

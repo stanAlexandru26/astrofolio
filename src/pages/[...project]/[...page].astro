@@ -5,7 +5,7 @@ import { fetchPosts } from '@/utils/content';
 
 export async function getStaticPaths({ paginate }) {
   const posts = await fetchPosts('project');
-  return paginate(posts, { params: { project: 'project' }, pageSize: 4 });
+  return paginate(posts, { params: { project: 'project' } });
 }
 const { page } = Astro.props;
 ---

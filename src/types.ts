@@ -15,11 +15,15 @@ export interface Post {
   id: string;
   slug: string;
 
-  publishDate: Date;
   title: string;
+  publishDate: Date;
+  author?: string;
+  category?: string;
   description?: string;
-
-  image?: string;
+  thumbnail?: string;
+  repoUrl?: string;
+  demoUrl?: string;
+  icons?: string[];
 
   canonical?: string | URL;
   permalink?: string;
@@ -27,8 +31,6 @@ export interface Post {
   draft?: boolean;
 
   excerpt?: string;
-  category?: string;
-  author?: string;
 
   Content: unknown;
   content?: string;

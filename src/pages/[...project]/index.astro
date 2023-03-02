@@ -1,6 +1,9 @@
 ---
 import { fetchPosts } from '@/utils/content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import SinglePost from '@/components/markdown/SinglePost.astro';
 
 export async function getStaticPaths() {
   const posts = await fetchPosts('project');
@@ -11,7 +14,7 @@ export async function getStaticPaths() {
 }
 const { post } = Astro.props;
 
-console.log('🚀 ~ file: index.astro:17 ~ post:', post.title);
+console.log('🚀 ~ file: index.astro:17 ~ post:', post);
 const meta = {
   title: post.title,
   description: post.description,
@@ -21,6 +24,5 @@ const meta = {
 ---
 
 <BaseLayout meta={meta}>
-  <section class="mx-auto py-8 sm:py-16 lg:py-20">
-  </section>
+  <SinglePost post={post} />
 </BaseLayout>

@@ -1,0 +1,96 @@
+---
+import type { Post } from '@/types';
+import { getFormattedDate } from '@/utils/date';
+import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+import CustomLink from '../common/CustomLink.astro';
+import IconBadge from '../project/IconBadge.astro';
+
+export interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+---
+
+<article>
+  <header class="mx-auto mb-6 space-y-4">
+    <h1>
+      {post.title}
+    </h1>
+    <div class="flex flex-row items-center justify-start gap-2">
+      <Icon name="tabler:clock" class="w-5 h-5 inline-block" />
+      <time datetime={String(post.publishDate)}>{getFormattedDate(post.publishDate)}</time>
+      {
+        post.category && (
+          <>
+            ·
+            <Icon name="mdi:tag-text-outline" class="inline-block h-5 w-5" />
+            <p class="capitalize">{post.category}</p>
+          </>
+        )
+      }
+      {post.readingTime && <> · {post.readingTime} minute </>}
+    </div>
+    {
+      post.icons && (
+        <div class="flex flex-row items-center gap-2">
+          {post.icons.map((icon) => (
+            <IconBadge label={icon} />
+          ))}
+        </div>
+      )
+    }
+    {post.description && <p class="text-gray-500 dark:text-gray-400">{post.description}</p>}
+
+    <div class="flex flex-col sm:gap-4 lg:flex-row lg:gap-6">
+      {
+        post.demoUrl && (
+          <div class="flex flex-row items-center  gap-2">
+            <CustomLink href={post.demoUrl}>{post.demoUrl}</CustomLink>
+          </div>
+        )
+      }
+      {
+        post.repoUrl && (
+          <div class="flex flex-row items-center  gap-2">
+            <Icon name="fa:github" class="h-5 w-5" />
+            <CustomLink href={post.repoUrl}>{post.repoUrl}</CustomLink>
+          </div>
+        )
+      }
+    </div>
+    {
+      post.thumbnail ? (
+        <Picture
+          src={post.thumbnail}
+          class="mx-auto my-6 max-w-full rounded-md bg-gray-400 sm:rounded-md lg:max-w-6xl "
+          widths={[400, 900]}
+          sizes="(max-width: 900px) 400px, 900px"
+          alt={post.description || ''}
+          loading="eager"
+          aspectRatio={16 / 9}
+          width={900}
+          loading="eager"
+          decoding="async"
+          background={undefined}
+        />
+      ) : (
+        <div class="border-t " />
+      )
+    }
+  </header>
+  <div
+    class="prose prose-slate mx-auto max-w-none pb-4 dark:prose-invert md:prose-lg prose-headings:font-bold prose-headings:leading-tight prose-headings:tracking-tighter prose-img:rounded-md prose-img:shadow-lg"
+  >
+    {
+      post.Content ? (
+        <>
+          {/* @ts-ignore */}
+          <post.Content />
+        </>
+      ) : (
+        <Fragment set:html={post.content} />
+      )
+    }
+  </div>
+</article>
