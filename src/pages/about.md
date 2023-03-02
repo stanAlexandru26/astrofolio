@@ -1,9 +1,7 @@
 ---
-layout: '@/layouts/BaseLayout.astro'
+layout: '@/layouts/MarkdownLayout.astro'
 title: About Me
 ---
-
-# About Me
 
 I am passionate about design and technology so I always try to craft great-looking software products.
 

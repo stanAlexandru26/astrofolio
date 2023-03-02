@@ -1,0 +1,25 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { MetaSEO } from '@/types';
+export interface Props {}
+const { frontmatter } = Astro.props;
+const meta: MetaSEO = {
+  title: frontmatter?.title,
+  description: frontmatter?.description,
+  noindex: false,
+  ogType: 'article',
+};
+---
+
+<BaseLayout {meta}>
+  <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+    <h1 class="text-4xl font-bold leading-tight tracking-tighter md:text-5xl">
+      {frontmatter.title}
+    </h1>
+    <div
+      class="prose prose-lg mx-auto mt-8 max-w-4xl dark:prose-invert prose-headings:font-bold prose-headings:leading-tight prose-headings:tracking-tighter prose-a:text-blue-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-headings:text-slate-300 dark:prose-a:text-blue-400"
+    >
+      <slot />
+    </div>
+  </section>
+</BaseLayout>
