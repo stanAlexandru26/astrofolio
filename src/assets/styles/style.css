@@ -4,12 +4,12 @@
 
 @layer base {
   body {
-    @apply bg-white text-black dark:bg-gray-900 dark:text-slate-300 ;
+    @apply bg-white text-black dark:bg-gray-900 dark:text-slate-300;
   }
 
   h1,
   .h1 {
-    @apply text-3xl font-bold md:text-5xl leading-tight tracking-tighter;
+    @apply text-3xl font-bold leading-tight tracking-tighter md:text-5xl;
   }
 
   h2,
@@ -52,5 +52,3 @@
     @apply shadow-sm backdrop-blur-lg dark:bg-slate-900/50;
   }
 }
-
-
