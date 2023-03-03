@@ -28,11 +28,11 @@ export const NAVBAR_LINKS: NavbarLink[] = [
     icon: 'ant-design:project-filled',
     inNavbar: true,
   },
-  {
-    title: 'blog',
-    name: 'Blog',
-    href: '/blog',
-    icon: 'carbon:blog',
-    inNavbar: true,
-  },
+  // {
+  //   title: 'blog',
+  //   name: 'Blog',
+  //   href: '/blog',
+  //   icon: 'carbon:blog',
+  //   inNavbar: true,
+  // },
 ];
