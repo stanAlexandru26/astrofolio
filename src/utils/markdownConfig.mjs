@@ -2,7 +2,6 @@ import getReadingTime from 'reading-time';
 import { toString } from 'mdast-util-to-string';
 import rehypeSlug from 'rehype-slug';
 import rehypeHeadingsAutoLink from 'rehype-autolink-headings';
-
 function readingTimeRemarkPlugin() {
   return function (tree, file) {
     const textOnPage = toString(tree);

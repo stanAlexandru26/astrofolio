@@ -29,7 +29,7 @@ export interface Post {
   permalink?: string;
 
   draft?: boolean;
-
+  headings?: unknown;
   excerpt?: string;
 
   Content: unknown;

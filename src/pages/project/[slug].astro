@@ -1,20 +1,18 @@
 ---
 import { fetchPosts } from '@/utils/content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { Icon } from 'astro-icon';
-import { Picture } from '@astrojs/image/components';
 import SinglePost from '@/components/markdown/SinglePost.astro';
+import Toc from '@/components/markdown/Toc.astro';
 
 export async function getStaticPaths() {
   const posts = await fetchPosts('project');
   return posts.map((post) => ({
-    params: { project: `project/${post.slug}` },
+    params: { slug: post.slug },
     props: { post },
   }));
 }
 const { post } = Astro.props;
 
-console.log('🚀 ~ file: index.astro:17 ~ post:', post);
 const meta = {
   title: post.title,
   description: post.description,
@@ -24,5 +22,6 @@ const meta = {
 ---
 
 <BaseLayout meta={meta}>
-  <SinglePost post={post} />
+    <Toc headings={post.headings} />
+    <SinglePost post={post} />
 </BaseLayout>

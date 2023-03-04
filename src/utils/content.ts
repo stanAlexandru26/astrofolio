@@ -3,7 +3,7 @@ import type { Post } from '@/types';
 
 const getNormalizedPost = async (post: CollectionEntry<'project'>): Promise<Post> => {
   const { id, slug, data } = post;
-  const { Content, remarkPluginFrontmatter } = await post.render();
+  const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
   const {
     category: rawCategory,
@@ -22,9 +22,8 @@ const getNormalizedPost = async (post: CollectionEntry<'project'>): Promise<Post
     publishDate: publishDate,
     category: category,
     author: author,
-
+    headings,
     ...rest,
-
     Content: Content,
 
     readingTime: remarkPluginFrontmatter?.readingTime,
