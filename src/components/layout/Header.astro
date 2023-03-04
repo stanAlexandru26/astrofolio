@@ -17,19 +17,26 @@ const { isSticky = false } = Astro.props;
   ]}
   id="header"
 >
-  <div class="layoutContainer flex justify-between p-3">
+  <nav class="layoutContainer flex justify-between p-3">
     <div class="flex gap-4">
       <Avatar />
-      <nav class="hidden md:block space-x-2" aria-label="Main navigation">
+      <div class="hidden space-x-2 sm:flex items-center" aria-label="Main navigation">
         {NAVBAR_LINKS.filter((contact) => contact.inNavbar).map((link) => <NavItem {...link} />)}
-      </nav>
+      </div>
     </div>
     <div class="flex items-center gap-2">
       {CONTACT_LINKS.filter((contact) => contact.inNavbar).map((link) => <IconButton {...link} />)}
       <ToggleTheme />
-      <div class="block md:hidden">
+      <div class="block sm:hidden">
         <ToggleMenu />
       </div>
     </div>
-  </div>
+  </nav>
+  <nav
+    id="mininav"
+    class="layoutContainer flex justify-evenly p-3 sm:hidden"
+    aria-label="Phone navigation"
+  >
+    {NAVBAR_LINKS.filter((contact) => contact.inNavbar).map((link) => <NavItem {...link} />)}
+  </nav>
 </header>
