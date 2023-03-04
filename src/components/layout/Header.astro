@@ -20,7 +20,7 @@ const { isSticky = false } = Astro.props;
   <nav class="layoutContainer flex justify-between p-3">
     <div class="flex gap-4">
       <Avatar />
-      <div class="hidden space-x-2 sm:flex items-center" aria-label="Main navigation">
+      <div class="hidden items-center space-x-2 sm:flex" aria-label="Main navigation">
         {NAVBAR_LINKS.filter((contact) => contact.inNavbar).map((link) => <NavItem {...link} />)}
       </div>
     </div>

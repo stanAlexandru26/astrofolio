@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply scroll-smooth text-base;
+  }
   body {
     @apply bg-white text-black dark:bg-gray-900 dark:text-slate-300;
   }
@@ -51,4 +54,7 @@
   .scroll {
     @apply shadow-sm backdrop-blur-lg dark:bg-slate-900/50;
   }
+}
+:target::before {
+  scroll-margin-top: 1em;
 }

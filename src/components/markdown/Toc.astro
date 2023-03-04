@@ -14,18 +14,17 @@ const headings = rawHeadings.filter((h) => h.depth === 2);
 if (headings.length <= 1) return undefined;
 ---
 
-<div
-  id="toc"
+<aside
   class="fixed inset-y-[10rem] right-[8rem] hidden max-h-[50vh] max-w-[30rem] overflow-auto overscroll-contain xl:block"
 >
   <h1 class="h4">Tabel of content:</h1>
-  <div>
-    <ul class="mt-2">
+  <nav>
+    <ul class="mt-2" id="toc">
       {
         headings.map((heading) => {
           return (
             <li>
-              <a class=" text-gray-800 dark:text-gray-400" href={`#${heading.slug}`}>
+              <a class=" text-gray-800 dark:text-gray-400 " href={`#${heading.slug}`}>
                 {heading.text}
               </a>
             </li>
@@ -33,5 +32,28 @@ if (headings.length <= 1) return undefined;
         })
       }
     </ul>
-  </div>
-</div>
+  </nav>
+</aside>
+<style>
+  .active {
+    @apply font-bold;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.getAttribute('id');
+        if (entry.intersectionRatio > 0) {
+          document.querySelector(`nav ul a[href="#${id}"]`)?.classList.add('active');
+        } else {
+          document.querySelector(`nav ul a[href="#${id}"]`)?.classList.remove('active');
+        }
+      });
+    });
+    document.querySelectorAll('.prose h1,.prose h2').forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
